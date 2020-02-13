@@ -18,7 +18,7 @@ transporter.verify((error, success) => {
   }
 });
 
-router.post('/wes_test/', (req, res, next) => {
+router.post('/thanks/', (req, res, next) => {
   var name = req.body.name
   var email = req.body.email
   var message = req.body.message

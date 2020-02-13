@@ -14,19 +14,13 @@ class App extends React.Component {
         this.onMessageChange = this.onMessageChange.bind(this);
       }
 
-      handleSubmit(e){
+     async handleSubmit(e){
         e.preventDefault();
-        axios({
-          method: "POST", 
-          url:"https://forms.westuc.com/wes_test/",
-          data:  this.state
-        }).then((response)=>{
-          if (response.data.status === 'success'){
-            alert("Message Sent."); 
-            this.resetForm()
-          }else if(response.data.status === 'fail'){
-            alert("Message failed to send.")
-          }
+        const { name, email, message } = this.state
+        const form = await axios.post('/api/form', {
+          name,
+          email,
+          message
         })
       }
     
